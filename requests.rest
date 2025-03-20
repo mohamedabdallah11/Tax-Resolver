@@ -1,0 +1,163 @@
+### Canada, Quebec
+GET http://localhost:8000/taxes?country=CA&state=Quebec
+
+> {%
+    client.test("Response with 2xx code", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response should contain 2 items", function() {
+        client.assert(response.body.length == 2, "Does not contain 2 items");
+    });
+
+    client.test("Response should contain correct taxes and percentages", function () {
+        let taxes = new Map();
+        response.body.forEach(function (taxItem) { taxes.set(taxItem.taxType, taxItem.percentage); } );
+
+        client.assert(taxes.has('GST/HST'), "Does not contain GST/HST");
+        client.assert(taxes.get('GST/HST') === 5, "GST/HST is not 5");
+
+        client.assert(taxes.has('PST'), "Does not contain VAT");
+        client.assert(taxes.get('PST') === 9.975, "PST is not 9.975, got" + taxes.get('PST'));
+    });
+%}
+
+### Canada, Ontario
+GET http://localhost:8000/taxes?country=CA&state=Ontario
+
+> {%
+    client.test("Response with 2xx code", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response should contain 1 item", function() {
+        client.assert(response.body.length == 1, "Does not contain 2 item");
+    });
+
+    client.test("Response should contain correct taxes and percentages", function () {
+        let taxes = new Map();
+        response.body.forEach(function (taxItem) { taxes.set(taxItem.taxType, taxItem.percentage); } );
+
+        client.assert(taxes.has('GST/HST'), "Does not contain GST/HST");
+        client.assert(taxes.get('GST/HST') === 13, "GST is not 13");
+    });
+%}
+
+### US California
+GET http://localhost:8000/taxes?country=US&state=California
+
+> {%
+client.test("Response with 2xx code", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+
+client.test("Response should contain 1 item", function() {
+    client.assert(response.body.length == 1, "Does not contain 1 item");
+});
+
+client.test("Response should contain correct taxes and percentages", function () {
+    let taxes = new Map();
+    response.body.forEach(function (taxItem) { taxes.set(taxItem.taxType, taxItem.percentage); } );
+
+    client.assert(taxes.has('VAT'), "Does not contain VAT");
+    client.assert(taxes.get('VAT') === 7.25, "VAT is not 7.25");
+});
+%}
+
+### Lithuania
+GET http://localhost:8000/taxes?country=LT
+
+> {%
+    client.test("Response with 2xx code", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response should contain 1 item", function() {
+        client.assert(response.body.length == 1, "Does not contain 1 item1");
+    });
+
+    client.test("Response should contain correct taxes and percentages", function () {
+        let taxes = new Map();
+        response.body.forEach(function (taxItem) { taxes.set(taxItem.taxType, taxItem.percentage); } );
+
+        client.assert(taxes.has('VAT'), "Does not contain VAT");
+        client.assert(taxes.get('VAT') === 21, "VAT is not 21");
+    });
+%}
+
+### Latvia
+GET http://localhost:8000/taxes?country=LV
+
+> {%
+    client.test("Response with 2xx code", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response should contain 1 item", function() {
+        client.assert(response.body.length == 1, "Does not contain 1 item1");
+    });
+
+    client.test("Response should contain correct taxes and percentages", function () {
+        let taxes = new Map();
+        response.body.forEach(function (taxItem) { taxes.set(taxItem.taxType, taxItem.percentage); } );
+
+        client.assert(taxes.has('VAT'), "Does not contain VAT");
+        client.assert(taxes.get('VAT') === 22, "VAT is not 22");
+    });
+%}
+
+### Estonia
+GET http://localhost:8000/taxes?country=EE
+
+> {%
+    client.test("Response with 2xx code", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response should contain 1 item", function() {
+        client.assert(response.body.length == 1, "Does not contain 1 item1");
+    });
+
+    client.test("Response should contain correct taxes and percentages", function () {
+        let taxes = new Map();
+        response.body.forEach(function (taxItem) { taxes.set(taxItem.taxType, taxItem.percentage); } );
+
+        client.assert(taxes.has('VAT'), "Does not contain VAT");
+        client.assert(taxes.get('VAT') === 20, "VAT is not 20");
+    });
+%}
+
+### Poland
+GET http://localhost:8000/taxes?country=PL
+
+> {%
+    client.test("Response with 2xx code", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response should contain key 'message'", function() {
+        client.assert(response.body.hasOwnProperty("message"), "Does not contain 'message' key");
+        client.assert(response.body.message == "failed fetching taxes", "Does not contain 'message' key");
+    });
+%}
+
+### Germany
+GET http://localhost:8000/taxes?country=DE
+
+> {%
+    client.test("Response with 2xx code", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response should contain 1 item", function() {
+        client.assert(response.body.length == 1, "Does not contain 1 item");
+    });
+
+    client.test("Response should contain correct taxes and percentages", function () {
+        let taxes = new Map();
+        response.body.forEach(function (taxItem) { taxes.set(taxItem.taxType, taxItem.percentage); } );
+
+        client.assert(taxes.has('VAT'), "Does not contain VAT");
+        client.assert(taxes.get('VAT') === 19, "VAT is not 19");
+    });
+%}
