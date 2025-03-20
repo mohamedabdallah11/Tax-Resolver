@@ -6,6 +6,7 @@
 parameters:
 
 services:
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -24,5 +25,14 @@ services:
         resource: '../src/Controller/'
         tags: [ 'controller.service_arguments' ]
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Service\Implementation\TaxBeeAdapter:
+        arguments:
+            $taxBee: '@App\ExternalService\TaxBee\TaxBee'
+
+    App\Service\Implementation\SeriousTaxAdapter:
+        arguments:
+            $seriousTax: '@App\ExternalService\SeriousTax\SeriousTaxService'
+
+    App\Service\TaxService:
+        arguments:      
+            $taxProvider: '@App\Service\Implementation\SeriousTaxAdapter'  #'@App\Service\Implementation\SeriousTaxAdapter'
