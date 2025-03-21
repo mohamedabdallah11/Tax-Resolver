@@ -23,7 +23,8 @@ class TaxService
             return $cacheItem->get();
         }
  
-
+        $country = strtoupper($country);
+        $state = strtolower($state);
             $provider = $this->taxProvider->getProvider($country);
                           
             $taxes = $provider->getTaxes($country, $state);
