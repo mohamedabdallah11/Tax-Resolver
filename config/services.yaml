@@ -32,7 +32,10 @@ services:
     App\Service\Implementation\SeriousTaxAdapter:
         arguments:
             $seriousTax: '@App\ExternalService\SeriousTax\SeriousTaxService'
-
+    App\Service\Factory\TaxProviderFactory:
+        arguments:
+            $taxBeeAdapter: '@App\Service\Implementation\TaxBeeAdapter'
+            $seriousTaxAdapter: '@App\Service\Implementation\SeriousTaxAdapter'
     App\Service\TaxService:
         arguments:      
-            $taxProvider: '@App\Service\Implementation\SeriousTaxAdapter'  #'@App\Service\Implementation\SeriousTaxAdapter'
+            $taxProvider: '@App\Service\Factory\TaxProviderFactory'
