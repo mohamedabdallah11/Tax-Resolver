@@ -25,17 +25,17 @@ services:
         resource: '../src/Controller/'
         tags: [ 'controller.service_arguments' ]
 
-    App\Service\Implementation\TaxBeeAdapter:
+    App\Adapter\Implementation\TaxBeeAdapter:
         arguments:
             $taxBee: '@App\ExternalService\TaxBee\TaxBee'
 
-    App\Service\Implementation\SeriousTaxAdapter:
+    App\Adapter\Implementation\SeriousTaxAdapter:
         arguments:
             $seriousTax: '@App\ExternalService\SeriousTax\SeriousTaxService'
-    App\Service\Factory\TaxProviderFactory:
+    App\Factory\TaxProviderFactory:
         arguments:
-            $taxBeeAdapter: '@App\Service\Implementation\TaxBeeAdapter'
-            $seriousTaxAdapter: '@App\Service\Implementation\SeriousTaxAdapter'
+            $taxBeeAdapter: '@App\Adapter\Implementation\TaxBeeAdapter'
+            $seriousTaxAdapter: '@App\Adapter\Implementation\SeriousTaxAdapter'
     App\Service\TaxService:
         arguments:      
-            $taxProvider: '@App\Service\Factory\TaxProviderFactory'
+            $taxProvider: '@App\Factory\TaxProviderFactory'

@@ -1,5 +1,5 @@
 <?php
-namespace App\Service\Interface;
+namespace App\Adapter\Interface;
 
 interface TaxProviderInterface
 {

@@ -1,8 +1,8 @@
 <?php 
-namespace App\Service\Implementation;
+namespace App\Adapter\Implementation;
 
 use App\ExternalService\TaxBee\TaxBee;
-use App\Service\Interface\TaxProviderInterface;
+use App\Adapter\Interface\TaxProviderInterface;
 
 
 class TaxBeeAdapter implements TaxProviderInterface

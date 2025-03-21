@@ -1,9 +1,9 @@
 <?php
-namespace App\Service\Factory;
+namespace App\Factory;
 
-use App\Service\Implementation\SeriousTaxAdapter;
-use App\Service\Implementation\TaxBeeAdapter;
-use App\Service\Interface\TaxProviderInterface;
+use App\Adapter\Implementation\SeriousTaxAdapter;
+use App\Adapter\Implementation\TaxBeeAdapter;
+use App\Adapter\Interface\TaxProviderInterface;
 class TaxProviderFactory
 {
    

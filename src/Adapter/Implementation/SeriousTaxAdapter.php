@@ -1,7 +1,7 @@
 <?php 
-namespace App\Service\Implementation;
+namespace App\Adapter\Implementation;
 use App\ExternalService\SeriousTax\SeriousTaxService;
-use App\Service\Interface\TaxProviderInterface;
+use App\Adapter\Interface\TaxProviderInterface;
 use App\ExternalService\SeriousTax\Location;
 class SeriousTaxAdapter implements TaxProviderInterface
 {   
