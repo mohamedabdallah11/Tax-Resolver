@@ -24,7 +24,8 @@ class TaxService
         }
  
         $country = strtoupper($country);
-        $state = strtolower($state);
+        
+        $state = empty($state) ? '' : strtolower($state);
             $provider = $this->taxProvider->getProvider($country);
                           
             $taxes = $provider->getTaxes($country, $state);
